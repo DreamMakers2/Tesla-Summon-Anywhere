@@ -21,12 +21,6 @@ configuration, credential backups, tokens, keys, credential-bearing APKs,
 signing files or device logs. Public build artifacts must not contain developer
 credentials.
 
-Test Android location or foreground-service changes on a device when practical.
-Unit tests cannot establish Android provider behavior or external API access.
-State whether verification used a real Tesla, a synthetic fixture or a mocked
-service. Describe the device and coverage without sharing account/vehicle
-identifiers, precise locations or private screenshots.
-
 Preserve attribution and applicable third-party notices when adding or changing
 assets. This project uses the MIT license; do not change the licensing model
 without an explicit decision. See [SECURITY.md](SECURITY.md) for sensitive

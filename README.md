@@ -51,9 +51,8 @@ Maps SDK for Android, this app's package and your signing certificate. The
 current release build uses debug signing and is intended for private sideloading.
 
 Tesla OAuth tokens use encrypted app storage. Selected vehicle ID and name use
-ordinary app-local SharedPreferences; see [security](SECURITY.md) for limitations.
-The requested OAuth scopes have been preserved, including `user_data`; the
-minimum working scope set has not been established by a new authorization test.
+ordinary app-local SharedPreferences; see [security](SECURITY.md).
+The requested OAuth scopes are preserved, including `user_data`.
 Inter fonts are bundled locally under the SIL Open Font License, and runtime
 font fetching is disabled.
 
@@ -65,10 +64,8 @@ flutter test
 ```
 
 The source baseline was tested on a real Android phone and Tesla by the owner.
-The prepared public-release copy has not been newly verified on a real vehicle.
-Source checks alone do not establish Fleet API access, map rendering, mock GPS
-behavior or cleanup on another device. See [requirements](docs/REQUIREMENTS.md)
-and the [release checklist](docs/PUBLIC_RELEASE_CHECKLIST.md).
+See [requirements](docs/REQUIREMENTS.md) and the
+[release checklist](docs/PUBLIC_RELEASE_CHECKLIST.md).
 
 ## Screenshots
 

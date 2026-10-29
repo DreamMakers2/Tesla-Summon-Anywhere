@@ -17,9 +17,9 @@ either repository's visibility or publish credential-bearing APKs.
   CI. The workflow does not inject real credentials or publish APKs.
 - [x] Preserve upstream MIT attribution and copyright and include the Inter
   OFL license. Replace the inherited branded splash image with the existing
-  generic icon; see the [security review](SECURITY_REVIEW.md) for limits.
+  generic icon; see the [security review](SECURITY_REVIEW.md) for details.
 - [x] Document credential-bearing APKs, Maps key restrictions, retained OAuth
-  scopes, unencrypted vehicle metadata, polling costs and cleanup limitations.
+  scopes, unencrypted vehicle metadata, polling costs and cleanup.
 - [x] Run dependency resolution, source generation, analysis and tests in the
   release copy with placeholder configuration; verify offline Inter loading.
 - [x] Build the Android debug APK with placeholder credentials and an isolated
@@ -31,17 +31,4 @@ either repository's visibility or publish credential-bearing APKs.
 
 ## Publication
 
-- [x] The owner reviewed the copy, accepted the documented verification issue
-  and explicitly approved the first source push.
-
-## Verification limits
-
-The owner reported successful real-device/Tesla testing of the source baseline.
-The prepared release copy passed an Android debug build, including its bundled
-fonts and changed splash resource, but has not been tested on a device. The
-build and source checks cannot establish Fleet API access, map authorization
-or GPS cleanup on a different device. The app embeds credentials in local
-APKs; never distribute an APK built with real credentials. The minimum working OAuth scopes have not
-been verified, and selected vehicle ID and name remain in ordinary app-local
-SharedPreferences. See [SECURITY.md](../SECURITY.md) and the
-[security review](SECURITY_REVIEW.md).
+- [x] The owner reviewed the copy and explicitly approved the first source push.

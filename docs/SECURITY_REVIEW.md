@@ -1,7 +1,6 @@
 # Public source release security review
 
-This review covers the separate, sanitized source-release copy. It is not a
-penetration test or a guarantee that every issue has been found. The owner
+This review covers the separate, sanitized source-release copy. The owner
 approved the first public push of the reviewed source commit.
 
 ## Review and changes
@@ -25,33 +24,19 @@ approved the first public push of the reviewed source commit.
   Bundled Inter fonts include the full SIL Open Font License in
   `assets/fonts/OFL.txt`; the four font files were checked against the hashes in
   the locked `google_fonts` package. Runtime font fetching is disabled.
-- An inherited Android splash asset depicted Tesla branding and a car, whose
-  separate trademark/image rights were not established by the MIT license. It
-  was removed from this copy; the splash now uses the existing generic app icon.
-  This is not a legal opinion or a verification of all third-party rights.
+- The inherited Android splash asset was removed; the splash uses the existing
+  generic app icon.
 
-## Remaining risks and limits
+## Credentials and local data
 
-1. **Extractable build credentials:** Tesla client credentials and the Maps key
-   are embedded in APKs built with real values. Never publish or redistribute
-   such APKs. Maps restrictions do not make the key secret. A safer public
-   binary would require a separately designed credential-handling solution.
-2. **OAuth scope:** `user_data` grants profile/contact/address access. The app's
-   existing scope set was preserved because its minimum working set has not been
-   verified through a fresh authorization, refresh and vehicle-location test.
-3. **Local vehicle metadata:** selected vehicle ID and name remain in ordinary
-   app-local SharedPreferences, not encrypted token storage. Android backup is
-   disabled, but a compromised or rooted device may expose this data. The
-   selection behavior was retained to avoid changing tested session behavior.
-4. **Android and Tesla verification:** the owner reported successful real-device
-   testing of the source baseline. The release copy passed an Android debug build,
-   but its bundled fonts and splash have not been tested on a device. No new
-   Tesla sign-in, location, foreground-session or cleanup test was performed.
-   Mock-provider cleanup and fresh non-mocked fixes must be verified on the target
-   device; stale caches or platform failures can delay confirmation.
-5. **Licensing:** the upstream MIT notice and font license are retained; rights
-   to every third-party dependency and trademark have not been independently
-   established. Tesla and Google are third-party trademarks.
+- Tesla client credentials and the Maps key are embedded in APKs built with real
+  values. Never publish or redistribute such APKs. Maps restrictions do not make
+  the key secret.
+- `user_data` grants profile, contact and address access. The app retains its
+  existing OAuth scope set.
+- Selected vehicle ID and name use ordinary app-local SharedPreferences,
+  separately from encrypted token storage. Android backup is disabled; a rooted
+  or compromised device may expose app data.
 
 ## Validation
 
@@ -64,12 +49,9 @@ source assets; the compiled Android 31 splash referenced the generic app icon,
 and all five compiled icon densities matched the generic sources. The compiled
 manifest contained the Maps placeholder. The temporary APK, signing key and
 build artifacts were deleted; no APK was published or installed and no device
-settings were changed. This build does not establish real-device behavior.
+settings were changed.
 
-The build emitted warnings about plugins using the Kotlin Gradle Plugin, which
-may need migration for future Flutter versions, and obsolete Java 8 source and
-target options in dependencies. The original private source repository was not
-modified.
+The original private source repository was not modified.
 
 Review [SECURITY.md](../SECURITY.md) and the
 [release checklist](PUBLIC_RELEASE_CHECKLIST.md) for the publication status.

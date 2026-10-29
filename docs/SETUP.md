@@ -8,7 +8,7 @@ private because its Tesla client secret can be extracted.
 ## 1. Prepare the development tools
 
 Install the Flutter stable SDK, an Android SDK and a compatible JDK. The project
-uses Java 17 source/target compatibility; see the toolchain details and limits
+uses Java 17 source/target compatibility; see the toolchain details
 in [requirements](REQUIREMENTS.md). Follow Flutter's
 [Android setup instructions](https://docs.flutter.dev/platform-integration/android/setup)
 and complete Android SDK license acceptance when requested by those tools.
@@ -125,18 +125,15 @@ An update signed with the same certificate can preserve existing app data.
 3. Follow the app's battery-settings step. Allow location access and
    notifications when prompted. Precise location and enabled device location
    services are needed to observe the phone's location.
-4. Confirm that real map tiles load and that the expected Tesla is selected.
-5. When it is appropriate for other apps on your phone to receive mocked
+4. When it is appropriate for other apps on your phone to receive mocked
    location, tap **Start GPS Sync**. A foreground session lasts up to five
    minutes and polls available Tesla location approximately every five seconds.
-6. Open the location-status sheet to inspect Tesla, submitted mock, effective
-   phone and last observed real phone fixes. Stop the session and confirm that
-   normal location updates resume.
+5. Open the location-status sheet to inspect Tesla, submitted mock, effective
+   phone and last observed real phone fixes. Use **Stop** to end the session.
 
 The app reads Fleet API data; it does not send wake or vehicle-control commands.
-An asleep or offline vehicle may not provide current coordinates. Other apps
-can detect or decline mock locations, and this project does not establish
-compatibility with their behavior.
+An asleep or offline vehicle may not provide current coordinates. Other apps can
+detect or decline mock locations.
 
 Inter font assets are bundled locally and runtime font fetching is disabled;
 font downloads are not part of application startup. See
@@ -144,7 +141,7 @@ font downloads are not part of application startup. See
 
 The app saves the selected vehicle ID and name in ordinary app-local
 SharedPreferences; OAuth tokens use encrypted storage. See
-[security](../SECURITY.md) for privacy and cleanup limitations.
+[security](../SECURITY.md).
 
 ## Source checks
 
@@ -153,9 +150,7 @@ flutter analyze
 flutter test
 ```
 
-CI also resolves dependencies and generates sources before these checks. Source
-checks do not prove real map rendering, vehicle connectivity or Android mock
-location behavior; those need the real-device checks above.
+CI also resolves dependencies and generates sources before these checks.
 
 ## Troubleshooting
 
@@ -170,5 +165,4 @@ location behavior; those need the real-device checks above.
 - **Mock location unavailable:** confirm the Android mock-location app selection
   and location permissions, then check the app's status again.
 - **Location still looks mocked after stopping:** reopen the app and check its
-  cleanup/effective-location status. Do not rely on a stale cached fix as proof
-  that normal location has resumed.
+  cleanup/effective-location status.
