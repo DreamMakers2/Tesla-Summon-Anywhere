@@ -1,8 +1,8 @@
 # Public source release checklist
 
 The [destination repository](https://github.com/DreamMakers2/Tesla-Summon-Anywhere)
-is already public. Do not push source until the owner explicitly approves the
-first publication. Do not change either repository's visibility.
+is public. The owner approved the first source publication; do not change
+either repository's visibility or publish credential-bearing APKs.
 
 ## Completed checks
 
@@ -22,23 +22,26 @@ first publication. Do not change either repository's visibility.
   scopes, unencrypted vehicle metadata, polling costs and cleanup limitations.
 - [x] Run dependency resolution, source generation, analysis and tests in the
   release copy with placeholder configuration; verify offline Inter loading.
+- [x] Build the Android debug APK with placeholder credentials and an isolated
+  debug signing key. Verify the bundled fonts, compiled generic splash/icon and
+  Maps placeholder; delete the temporary APK, key and build artifacts.
 - [x] Review the release copy independently.
 - [x] Verify a single parentless initial commit with no inherited history,
   branches, tags or remotes.
 
-## Pending before publication
+## Publication
 
-- [ ] The owner reviews the copy, remaining risks and licensing and explicitly
-  approves the first public push.
+- [x] The owner reviewed the copy, accepted the documented verification issue
+  and explicitly approved the first source push.
 
 ## Verification limits
 
 The owner reported successful real-device/Tesla testing of the source baseline.
-The prepared release copy, including its bundled fonts and changed splash
-resource, has not been tested in a new Android build or on a device. Source
-checks cannot establish Fleet API access, map authorization or GPS cleanup on a
-different device. The app embeds credentials in local APKs; never distribute
-an APK built with real credentials. The minimum working OAuth scopes have not
+The prepared release copy passed an Android debug build, including its bundled
+fonts and changed splash resource, but has not been tested on a device. The
+build and source checks cannot establish Fleet API access, map authorization
+or GPS cleanup on a different device. The app embeds credentials in local
+APKs; never distribute an APK built with real credentials. The minimum working OAuth scopes have not
 been verified, and selected vehicle ID and name remain in ordinary app-local
 SharedPreferences. See [SECURITY.md](../SECURITY.md) and the
 [security review](SECURITY_REVIEW.md).

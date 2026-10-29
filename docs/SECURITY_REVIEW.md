@@ -1,8 +1,8 @@
 # Public source release security review
 
 This review covers the separate, sanitized source-release copy. It is not a
-penetration test or a guarantee that every issue has been found. The owner has
-not approved the first public push.
+penetration test or a guarantee that every issue has been found. The owner
+approved the first public push of the reviewed source commit.
 
 ## Review and changes
 
@@ -44,8 +44,8 @@ not approved the first public push.
    disabled, but a compromised or rooted device may expose this data. The
    selection behavior was retained to avoid changing tested session behavior.
 4. **Android and Tesla verification:** the owner reported successful real-device
-   testing of the source baseline. The release copy's bundled fonts and splash
-   resource have not been tested on a device or in an Android APK build. No new
+   testing of the source baseline. The release copy passed an Android debug build,
+   but its bundled fonts and splash have not been tested on a device. No new
    Tesla sign-in, location, foreground-session or cleanup test was performed.
    Mock-provider cleanup and fresh non-mocked fixes must be verified on the target
    device; stale caches or platform failures can delay confirmation.
@@ -57,10 +57,19 @@ not approved the first public push.
 
 `flutter pub get`, `dart run build_runner build`, `flutter analyze` and
 `flutter test` passed in the release copy using placeholder configuration;
-104 tests passed, including an offline Inter-loading test. Android XML resources
-were parsed and the generic splash icon reference checked. No APK was built or
-published, and no device settings were changed. The original private source
-repository was not modified.
+104 tests passed, including an offline Inter-loading test. The Android debug
+build (`flutter build apk --debug`) succeeded using placeholder Tesla and Google Maps credentials
+and an isolated debug signing key. All four bundled font files matched their
+source assets; the compiled Android 31 splash referenced the generic app icon,
+and all five compiled icon densities matched the generic sources. The compiled
+manifest contained the Maps placeholder. The temporary APK, signing key and
+build artifacts were deleted; no APK was published or installed and no device
+settings were changed. This build does not establish real-device behavior.
+
+The build emitted warnings about plugins using the Kotlin Gradle Plugin, which
+may need migration for future Flutter versions, and obsolete Java 8 source and
+target options in dependencies. The original private source repository was not
+modified.
 
 Review [SECURITY.md](../SECURITY.md) and the
-[release checklist](PUBLIC_RELEASE_CHECKLIST.md) before publication.
+[release checklist](PUBLIC_RELEASE_CHECKLIST.md) for the publication status.
