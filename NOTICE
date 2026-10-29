@@ -1,0 +1,18 @@
+Summon Anywhere
+
+Based on Summon Anywhere Tesla by the upstream contributors:
+https://github.com/usamasaleem1/summon-anywhere-tesla
+
+Copyright (c) 2026 Summon Anywhere contributors
+
+The upstream MIT license and copyright notice are retained in LICENSE.
+Dependencies retain their individual licenses; consult the package manifests,
+dependency lockfile and any accompanying asset license files.
+
+Inter font files are bundled in assets/fonts under the SIL Open Font License
+1.1. The full copyright notice and license are in assets/fonts/OFL.txt.
+Source: https://github.com/google/fonts/tree/main/ofl/inter
+
+Tesla and Google Maps are third-party services and trademarks of their
+respective owners. This project is not presented as an official Tesla or Google
+product.

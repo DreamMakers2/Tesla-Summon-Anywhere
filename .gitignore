@@ -1,0 +1,130 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+secrets.json
+tesla-config.json
+firebase-debug.log
+.env
+.env.*
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+android/build/
+
+# Preserved workspace ignore rules
+# Environment & secrets
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Dependencies & virtual environments
+/node_modules/
+/.venv/
+/venv/
+
+# Python
+__pycache__/
+*.py[cod]
+/.pytest_cache/
+/.mypy_cache/
+/.ruff_cache/
+/.cache/
+
+# Coverage
+/coverage/
+/.coverage
+/htmlcov/
+
+# Test & browser output
+/playwright-report/
+/test-results/
+.playwright-mcp
+
+# Logs & temporary files
+*.log
+*.tmp
+/tmp/
+/temp/
+
+# Editor & OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*~
+*.swp
+*.swo
+
+# AI / agent tooling
+/.codex/
+.agents/
+
+# Local project instructions & working files
+AGENTS.md
+start.md
+prompt.md
+plan.md
+github-public-release-guide.md
+/docs/OPERATIONAL_MEMORY.md
+
+# Local credential backups
+secrets.json.*
+!secrets.json.example
+*.jks
+*.keystore
+key.properties
+*.token
+*.tokens
+token.json
+tokens.json
+
+# Never commit builds, signing material or local credential backups.
+*.apk
+*.aab
+*.p8
+*.der
+*.cer
+*.crt
+tesla-config.json.*

@@ -1,0 +1,35 @@
+name: Flutter source checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# A push to an open PR should produce one run instead of duplicate push/PR runs.
+concurrency:
+  group: flutter-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  flutter:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: Resolve Flutter dependencies
+        run: flutter pub get
+      - name: Generate Riverpod sources
+        run: dart run build_runner build
+      - name: Analyze Dart source
+        run: flutter analyze
+      - name: Run unit tests
+        run: flutter test
