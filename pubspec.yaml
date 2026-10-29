@@ -1,5 +1,5 @@
 name: summon_anywhere_tesla
-description: Tesla Smart Summon radius bypass via mock location.
+description: Android app that mirrors Tesla vehicle location to mock GPS.
 publish_to: 'none'
 version: 0.1.0
 

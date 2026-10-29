@@ -50,6 +50,7 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 android/build/
+/android/app/build/
 
 # Preserved workspace ignore rules
 # Environment & secrets
